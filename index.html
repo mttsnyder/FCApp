@@ -1,0 +1,305 @@
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+
+<style>
+
+.inputdiv {
+    display:inline;
+}
+.inputdiv {
+    display: inline-block;
+    font-family: Constantia;
+    background-color:white;
+    opacity: .65;
+    width: 65%;
+    margin-left:40%;
+    border: 1px solid;
+    padding-top:1.5%;
+    padding-bottom:1.5%;
+    padding-left:2%;
+    padding-right:2%;
+    box-shadow: 10px 10px 5px #888888;
+}
+.date,.CLN,.RefSrc,.Other,.Requested,.Booked,.Contact,.EnteredBy,.OtherInfo,.submit {
+        margin-top:2%;
+        margin-bottom:2%;
+    width: 40%;
+    }
+img {
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity: 0.25;
+    z-index: -100;
+}
+    h1 {
+        position:absolute;
+        font-family: Constantia;
+        Color: darkslateblue;
+    }
+    .total {
+        border: 1px solid darkslateblue;
+        font-size: 26px;
+        font-family: Constantia;
+        display: block;
+        margin-left: 25%;
+        width: 40%;
+    }
+.sbin {
+    margin-left:5%
+    }
+.header {
+    margin-left: 5%;
+}
+
+
+
+</style>
+</head>
+<body>
+<img src="FCLogoGY.jpg">
+
+<div class='header'><h1>Ref </br>Trax</h1></div>
+</br>
+<div id="inputdiv" class="inputdiv">
+    <label for="date">Date of Call:</label>
+    <input id="date" type="date" class="date" name="date" placeholder="Date"></br>
+    <label for="CLN">Client Id:</label>
+    <input id="CLN" type="text" class="CLN" name="CLN" placeholder="Client Id"></br>
+    <label for="RefSrc">Referral Source:</label>
+    <select id="RefSrc" class="RefSrc">
+        <option value="PsyToday">Psy Today</option>
+        <option value="Client">Client</option>
+        <option value="GoodTherapy">Good Therapy</option>
+        <option value="Google">Google</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Website">Website</option>
+        <option value="Other">Other</option>
+    </select></br>
+    <label for="Other" id="Olab" style="display:none">Other:</label>
+    <input id="Other" type="text" class="Other" name="Other" placeholder="Other" style="display:none"></br>
+    <label for="Requested">Requested:</label>
+    <input id="Requested" type="text" class="Requested" name="Requested" placeholder="Requested"></br>
+    <label for="Booked">Booked?:</label>
+    <input id="Booked" type="checkbox" class="Booked" name="Booked"></br>
+    <label for="Contact">Contact Info:</label>
+    <input id="Contact" type="text" class="Contact" name="Contact" placeholder="Contact Info"></br>
+    <label for="EnteredBy">Info Entered By:</label>
+    <select id="EnteredBy">
+        <option value="Snyder">Snyder</option>
+        <option value="Sharon">Sharon</option>
+        <option value="Bram">Bram</option>
+        <option value="Rebecca">Rebecca</option>
+        <option value="Jessie">Jessie</option>
+        <option value="Lizzy">Lizzy</option>
+        <option value="Other">Other</option>
+    </select></br>
+    <label for="Other2" id="Olab2" style="display:none">Other:</label>
+    <input id="Other2" type="text" class="Other" name="Other2" placeholder="Other" style="display:none"></br>
+    <label for="OtherInfo" id="LOInf">Other Info:</label></br>
+    <input id="OtherInfo" type="text" class="OtherInfo" name="OtherInfo" placeholder="Other Info"></br>
+    <label for="Ins" id="LOINS">Insurance:</label></br>
+    <input id="Ins" type="text" class="Ins" name="Ins" placeholder="Insurance:"></br>
+
+    <label for="Wait" id="LOWait">Waitlist?</label></br>
+    <select id="Wait" class="Wait">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+    </select></br>
+
+    <input id="submit" type="submit" class="submit" name="submit" Value="submit"></br>
+</div>
+<div id="criteria" class="sbin">
+    <select name="months" id="critin">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">Sept</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>
+    </select>
+</br></br>
+        <input type="radio" id="critiny1" name="Year" value="2016"> 2016</br>
+        <input type="radio" id="critiny2" name="Year" value="2017"> 2017</br>
+        <input type="radio" id="critiny3" name="Year" value="2017"> 2018</br>
+</br>
+    <input id="submitc" type="submit" class="submitc" name="submitc" Value="Report"></br></br>
+    <input id="submitd" type="submit" class="submitd" name="submitd" Value="Waitlist"></br></br>
+</div>
+<div id="datadiv" class="container">
+    <table id="datatable" class="table table-striped"></table>
+</div>
+<div id="total" class="total"></div>
+<div id="footer"></div></br>
+</br>
+</br>
+<?php
+
+
+?>
+
+<script type="text/javascript">
+    var d = new Date(),
+            n = d.getMonth(),
+            y = d.getFullYear();
+
+    $('#critin option:eq('+n+')').prop('selected', true);
+
+
+    $('input[value="'+y+'"]').prop('checked', true);
+
+    $("#submitd").on("click", function() {
+        $("#datatable").html("");
+        $.ajax({
+            url: "http://www.holisticanalyticswnc.com/FCApp/GetWL.php",
+            type: "post",
+            data: {},
+            success: function (data) {
+                $("#datatable").html(data);
+                var tot = $("tbody tr").length;
+                $("#total").html("Number of Entries: " + tot);
+
+                $("#datatable tbody tr td").click(function () {
+                    tt = $(this);
+                    ty = tt[0].innerText;
+                    $('td').on('focusout',function () {
+                        hug=tt.parent().children();
+                        var update= hug[0].innerText;
+                        var upname = hug[1].innerText;
+                        var upreq = hug[2].innerText;
+                        var uprefsrc = hug[3].innerText;
+                        var upbooked = hug[4].innerText;
+                        var upconinf = hug[5].innerText;
+                        var upenby = hug[6].innerText;
+                        var upoth = hug[7].innerText;
+                        var upins = hug[8].innerText;
+                        var upwl = hug[9].innerText;
+                        var upid = hug[10].innerText;
+
+                        upData = {"date": update, "CLN": upname, "Requested": upreq, "RefSrc": uprefsrc, "Booked" : upbooked, "ConInf" : upconinf, "EntBy" : upenby, "Other": upoth, "UpIns" : upins, "UPWL": upwl, "UPID": upid};
+                        $.ajax({
+                            url: "http://www.holisticanalyticswnc.com/FCApp/updata.php",
+                            type: "post",
+                            data: upData/*,
+                            success: */
+                        });
+                    })
+                });
+
+                $('#datatable').dataTable();
+            }
+        });
+    });
+
+
+    $("#submitc").on("click", function() {
+        cyear = $("input:checked").val();
+
+
+        var crit = $("#critin").val();
+
+        $.ajax({
+            url: "http://www.holisticanalyticswnc.com/FCApp/GetData.php",
+            type: "post",
+            data: {"crit": crit, "cyear": cyear},
+            success: function (data) {
+                $("#datatable").html(data);
+                var tot = $("tbody tr").length;
+                $("#total").html("Number of Entries: " + tot);
+
+                $("#datatable tbody tr td").click(function () {
+                    tt = $(this);
+                    ty = tt[0].innerText;
+                   $('td').on('focusout',function () {
+                        hug=tt.parent().children();
+                        var update= hug[0].innerText;
+                        var upname = hug[1].innerText;
+                        var upreq = hug[2].innerText;
+                        var uprefsrc = hug[3].innerText;
+                        var upbooked = hug[4].innerText;
+                        var upconinf = hug[5].innerText;
+                        var upenby = hug[6].innerText;
+                        var upoth = hug[7].innerText;
+                        var upins = hug[8].innerText;
+                        var upwl = hug[9].innerText;
+                        var upid = hug[10].innerText;
+
+                        upData = {"date": update, "CLN": upname, "Requested": upreq, "RefSrc": uprefsrc, "Booked" : upbooked, "ConInf" : upconinf, "EntBy" : upenby, "Other": upoth, "UpIns" : upins, "UPWL": upwl, "UPID": upid};
+                        $.ajax({
+                            url: "http://www.holisticanalyticswnc.com/FCApp/updata.php",
+                            type: "post",
+                            data: upData/*,
+                            success: */
+                            });
+                            })
+                });
+
+                    $('#datatable').dataTable();
+                }
+        });
+    });
+
+
+      $("#RefSrc").on("change",function (){
+       var rf= $("#RefSrc").val();
+        if (rf=="Other"){
+            $("#Other").css("display","inline-block");
+            $("#Olab").css("display","inline-block");
+        }});
+      $("#EnteredBy").on("change",function (){
+          var tr= $("#EnteredBy").val();
+          if (tr=="Other"){
+              $("#Other2").css("display","inline-block");
+              $("#Olab2").css("display","inline-block");
+          }});
+
+
+</script>
+<script type="text/javascript">
+
+    $("#submit").on("click",function(){
+    var date = $("#date").val();
+    var CLN = $("#CLN").val();
+    var RefSrc = $("#RefSrc").val();
+    var Other = $("#Other").val();
+    var Requested = $("#Requested").val();
+    var Booked = $("#Booked").val();
+    var Contact = $("#Contact").val();
+    var EnteredBy = $("#EnteredBy").val();
+    var OtherInfo = $("#OtherInfo").val();
+    var Ins = $("#Ins").val();
+    var WL = $("#Wait").val();
+
+       serializeData = {"date": date, "CLN": CLN, "RefSrc": RefSrc, "Other": Other, "Requested": Requested, "Booked": Booked, "Contact": Contact, "EnteredBy": EnteredBy, "OtherInfo": OtherInfo
+       , "Ins": Ins, "Wait": WL};
+
+        $.ajax({
+            url: "http://www.holisticanalyticswnc.com/FCApp/AddRef.php",
+            type: "post",
+            data: serializeData,
+            success: function(data){
+                alert("returned: "+data)
+            }
+        });
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
