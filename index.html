@@ -219,7 +219,12 @@ img {
             data: {"crit": crit, "cyear": cyear},
             success: function (data) {
                 $("#datatable").html(data);
+
+
                 var tot = $("tbody tr").length;
+                for (i=0;i<tot;i++) {
+                  $("#datatable tbody tr:eq(i)").append("<td>delete</td>")
+                }
                 $("#total").html("Number of Entries: " + tot);
 
                 $("#datatable tbody tr td").click(function () {
