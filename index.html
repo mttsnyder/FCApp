@@ -220,9 +220,7 @@ img {
             success: function (data) {
                 $("#datatable").html(data);
                 var tot = $("tbody tr").length;
-                for (i=0;i<tot;i++) {
-                
-                }
+
                 $("#total").html("Number of Entries: " + tot);
 
                 $("#datatable tbody tr td").click(function () {
@@ -304,7 +302,9 @@ img {
 
     });
 
-
+$("'[id^="delete"]'").click(function (){
+  alert("delete was clicked")
+});
 
 </script>
 
