@@ -202,6 +202,7 @@ img {
                 $('#datatable').dataTable({
   "pageLength": 55
 });
+
             }
         });
     });
@@ -249,9 +250,11 @@ img {
                             });
                             })
                 });
-
+                $("td.delete").click(function (){
+                  yo="yo";
+                  alert("kk")});
                     $('#datatable').dataTable({
-  "pageLength": 50
+  "pageLength": 100
 });
                 }
         });
@@ -302,9 +305,10 @@ img {
 
     });
 
-$("[id^="delete"]").click(function (){
-  alert("delete was clicked")
-});
+
+
+</script>
+<script type="text/javascript">
 
 </script>
 
