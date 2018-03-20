@@ -31,7 +31,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 else {
-    echo "connection successful";
+    
 
     $sql = "INSERT INTO FC_Ref_Trax (Date, Client_Name, Ref_Source, Other,	Requested, Booked, Contact, Entered_By, Other_Info, Insurance, Waitlist) VALUES ('$date','$CLN','$RefSrc','$Other','$Requested','$Booked','$Contact','$EnteredBy','$OtherInfo', '$INS','$WL')";
     if ($conn->query($sql) === TRUE) {
