@@ -9,11 +9,6 @@
 $ther = $_POST["ther"];
 $nme = $_POST["nme"];
 $pn = $_POST["pn"];
-$stas="stas@fullcirclewnc.org";
-$sny="matt@fullcirclewnc.org";
-$amy="amy@fullcirclewnc.org";
-$bram="matt.bram@fullcirclewnc.org";
-$lily="lily@fullcirclewnc.org";
 $servername = "localhost";
 $username = "mttdb";
 $password = "P@ssw0rd";

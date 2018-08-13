@@ -217,6 +217,23 @@ img {
             data: {"crit": crit, "cyear": cyear},
             success: function (data) {
                 $("#datatable").html(data);
+                $.ajax({
+                    url: "http://www.holisticanalyticswnc.com/FCApp/GetTh.php",
+                    type: "post",
+                    success: function(data){
+                        alert("running");
+                        purple=JSON.parse(data);
+                        pink=Object.keys(purple);
+                        /*verve = $("td #toth").length;*/
+                        /*for (i=0;i<verve;i++){*/
+                        for(j=0;j<pink.length;j++)
+                        {   yel=pink[j];
+                            $("td #toth").append("<option>"+yel+"</option>");
+
+                        }
+                        /*}*/
+                    }
+                });
                 var tot = $("tbody tr").length;
 
                 $("#total").html("Number of Entries: " + tot);
@@ -266,7 +283,15 @@ img {
                     uprid = gump.parent().children(":eq(11)").text();
                     alert(shun+namers+numberss);
                     serializeDatag = {"ther": shun, "nme": namers, "pn": numberss};
+                    $.ajax({
+                        url: "http://www.holisticanalyticswnc.com/FCApp/SendRef.php",
+                        type: "post",
+                        data: {"ther": shun, "nme": namers, "pn": numberss},
+                        success: function(data){
+                            alert("returned: "+data);
 
+                        }
+                    });
                     $.ajax({
                         url: "http://www.holisticanalyticswnc.com/FCApp/upref.php",
                         type: "post",
@@ -285,23 +310,7 @@ img {
 
                 }
         });
-        $.ajax({
-            url: "http://www.holisticanalyticswnc.com/FCApp/GetTh.php",
-            type: "post",
-            success: function(data){
 
-                purple=JSON.parse(data);
-                pink=Object.keys(purple);
-                /*verve = $("td #toth").length;*/
-                /*for (i=0;i<verve;i++){*/
-                    for(j=0;j<pink.length;j++)
-                    {   yel=pink[j];
-                        $("td #toth").append("<option>"+yel+"</option>");
-
-                    }
-                /*}*/
-            }
-        });
     });
 
 
