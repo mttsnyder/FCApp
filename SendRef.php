@@ -39,6 +39,9 @@ $msg = wordwrap($msg,70);
 $headers = "From: matt@fullcirclewnc.org" . "\r\n" .
     "CC: matt@fullcirclewnc.org";
 // send email
-mail($themail,"referral for you",$msg,$headers);
-
+$sent=mail($themail,"referral for you",$msg,$headers);
+if (!$sent)
+{echo "mail not sent";}
+else
+{echo "mail sent";}
 ?>
