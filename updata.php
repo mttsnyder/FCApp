@@ -17,6 +17,7 @@ $RF = $_POST["RefSrc"];
 $BKD = $_POST["Booked"];
 $CI = $_POST["ConInf"];
 $EBY = $_POST["EntBy"];
+$UPR= $_POST["UpRe"];
 $Oth = $_POST["Other"];
 $INS = $_POST["UpIns"];
 $WL = $_POST["UPWL"];
@@ -30,7 +31,7 @@ if (!$conn) {
 }
 else {
 
-    $sql = "UPDATE FC_Ref_Trax SET Date = '$update', Client_Name = '$CLN', Ref_Source = '$RF', Requested = '$Req', Booked = '$BKD', Contact = '$CI', Entered_By = '$EBY', Other_Info = '$Oth', Insurance = '$INS', Waitlist = '$WL' WHERE id = '$UPID'";
+    $sql = "UPDATE FC_Ref_Trax SET Date = '$update', Client_Name = '$CLN', Ref_Source = '$RF', Requested = '$Req', Booked = '$BKD', Contact = '$CI', Entered_By = '$EBY', Other_Info = '$Oth', ReferTo = '$UPR',Insurance = '$INS', Waitlist = '$WL' WHERE id = '$UPID'";
     $result = $conn->query($sql);
 
     if ($conn->query($sql) === TRUE) {
